@@ -128,7 +128,7 @@ export const LOOT_NAME = "Community Power";
 export const LOOT_SYMBOL = "LOOT";
 export const DEFAULT_SUMMON_VALUES = {
   //votingPeriodInSeconds: 259200,
-  votingPeriodInSeconds: 200,
+  votingPeriodInSeconds: 201,
   // gracePeriodInSeconds: 172800,
   gracePeriodInSeconds: 6,
   newOffering: "10000000000000000",
