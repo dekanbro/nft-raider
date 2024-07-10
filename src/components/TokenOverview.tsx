@@ -96,14 +96,14 @@ export const TokenOverview = ({
           <ParMd>{metadata.description}</ParMd>
         </DetailItem>
         <DetailItem>
-          <Label>Presale Duration</Label>
+          <Label>NFT Escrow Raid Duration</Label>
           <ParMd>
             {formatShortDateTimeFromSeconds(yeeter.startTime)} -{" "}
             {formatShortDateTimeFromSeconds(yeeter.endTime)}
           </ParMd>
         </DetailItem>
         <DetailItem>
-          <Label>{`Presale Price (for ${formatLootForMin(yeeter)} ${
+          <Label>{`Raid Price (for ${formatLootForMin(yeeter)} ${
             yeeter.dao.shareTokenSymbol
           })`}</Label>
           <ParMd>{formatMinContribution(yeeter)} (ETH)</ParMd>

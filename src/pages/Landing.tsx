@@ -80,7 +80,7 @@ const Landing = () => {
               )}
               {finishedYeeters && (
                 <YeeterList
-                  title="Completed Presale"
+                  title="Completed RAID"
                   yeeters={finishedYeeters}
                 />
               )}

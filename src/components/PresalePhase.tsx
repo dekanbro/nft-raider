@@ -119,7 +119,7 @@ export const PresalePhase = ({
       <BigH2>RAIDING</BigH2>
       {yeeter.isComing && (
         <>
-          <BigH3>TO PRESALE START</BigH3>
+          <BigH3>INTO TO THE MOON RISE</BigH3>
           <DetailItemWarning>
             <BigH2>
               <Countdown date={new Date(Number(yeeter.startTime) * 1000)} />
@@ -134,7 +134,7 @@ export const PresalePhase = ({
       )}
       {yeeter.isActive && (
         <>
-          <BigH3>TO MOON RISE</BigH3>
+          <BigH3>INTO THE MOON</BigH3>
           <DetailItemWarning>
             <BigH2>
               <Countdown date={new Date(Number(yeeter.endTime) * 1000)} />
@@ -166,7 +166,7 @@ export const PresalePhase = ({
       )}
       {success && (
         <>
-          <BigH3>TO ESCROW</BigH3>
+          <BigH3>INTO FULL MOONESCROW</BigH3>
           {executed && (
             <>
               <ParSm>
@@ -177,7 +177,7 @@ export const PresalePhase = ({
           {!executed && (
             <>
               <ParSm>
-                The Presale was a success. The Uniswap Pool can be created.
+                The Raid was a success. The Uniswap Pool can be created.
               </ParSm>
 
               <ExecuteEscrowButton

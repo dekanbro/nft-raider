@@ -96,7 +96,7 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
 
   if (!metadata || !yeeter) return null;
 
-  const campaignStatus = getCampaignStatus(yeeter, executed || false, canExecute || false);
+  const campaignStatus = getCampaignStatus(yeeter, executed || false, canExecute || false, executed || false);
 
   return (
     <SpacedCard>
@@ -109,17 +109,18 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
         )}
       </TopSectionContainer>
       <DataCol>
-        <TokenNameParXl>{yeeter.dao.lootTokenSymbol}</TokenNameParXl>
+        <TokenNameParXl>{yeeter.dao.shareTokenSymbol }</TokenNameParXl>
+
         <DataXs>{metadata.name}</DataXs>
         {yeeter.isActive && (
           <TimeDataLg color={theme.warning.step10}>
-            Presale Ends {formatTimeRemainingShort(yeeter)}
+            RAID Ends {formatTimeRemainingShort(yeeter)}
           </TimeDataLg>
         )}
 
         {yeeter.isComingSoon && (
           <TimeDataLg color={theme.success.step10}>
-            Presale Starts {formatTimeUntilPresale(yeeter)}
+            RAID Starts {formatTimeUntilPresale(yeeter)}
           </TimeDataLg>
         )}
         {yeeter.isActive && (
@@ -153,6 +154,8 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
             daoId={yeeter.dao.id}
             yeeterId={yeeter.id}
             metadata={metadata}
+            context="details"
+            tokenSymbol={yeeter.dao.shareTokenSymbol}
           />
         )}
 
