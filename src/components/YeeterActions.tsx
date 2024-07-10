@@ -61,6 +61,8 @@ export const YeeterActions = ({
           daoChain={daoChain}
           daoId={daoId}
           yeeterId={yeeterId}
+          context="dashboard"
+          tokenSymbol={yeeter.dao.shareTokenSymbol}
 
         />)}
         {/* only durring presale if member */}
