@@ -99,7 +99,7 @@ const Landing = () => {
               <p>Please connect your wallet to continue.</p>
             </>
           )}
-          {isConnected && <h1>Unsupported Network. Switch to sepolia</h1>}
+          {isConnected && <h1>Unsupported Network. Switch to Arbitrum</h1>}
         </div>
       )}
     </>

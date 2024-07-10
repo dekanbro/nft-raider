@@ -1,4 +1,4 @@
-import { Chain, sepolia } from "viem/chains";
+import { Chain, sepolia, arbitrum } from "viem/chains";
 
 import {
   HAUS_NETWORK_DATA,
@@ -20,22 +20,22 @@ export const YEET24_NAME = "Yeet24ShamanModule";
 
 export const CURATOR_CONTRACTS: KeychainList = {
   YEET24_SUMMONER: {
-    "0xaa36a7": "0x78cf150b2E684562C0510C0b699edE1DCD69b983",
+    "0xa4b1": "",
   },
   YEETNFTESCROW_SUMMONER: {
-    "0xaa36a7": "0x78cf150b2E684562C0510C0b699edE1DCD69b983", // "0x3f5e1541cf9e7ef748cf86763a96b2f4c3a7bb4b", 
+    "0xa4b1": "0x41af243572381b327e1cb7b0b76fc1ebbbb8be0c", // "0x3f5e1541cf9e7ef748cf86763a96b2f4c3a7bb4b", 
   },
   YEETER_SINGLETON: {
-    "0xaa36a7": "0x62ff4ca410e9e58f5ce8b2ad03695ef0ad990381",
+    "0xa4b1": "",
   },
   YEETER2_SINGLETON: {
-    "0xaa36a7": "0x29da3216e205fbda1726c21a3059251e8aab4078",
+    "0xa4b1": "0xD55Ce418a17418FE36254AD71C25f87aA97AFC85",
   },
   YEETNFTESCROW_SINGLETON: {
-    "0xaa36a7": "0xf3a928c1ed005c137aa39edbbaa9215d52fc94f4",
+    "0xa4b1": "0xf84a8afa1ba33bab1ac8e82035e11bf3971888ab",
   },
   YEET24_SINGLETON: {
-    "0xaa36a7": "0x10a74cbe134295BC7148d3F0c8C7BFBc644D6C33",
+    "0xa4b1": "",
   },
   FIXED_LOOT_SINGLETON: {
     // "0x1": "0x9d42696a9c3c54952b8918dcbcb82dd710347c77",
@@ -46,26 +46,26 @@ export const CURATOR_CONTRACTS: KeychainList = {
     // "0x1": "0xbdf2bd70d5dc78dce008b337d889b50c217c6eb7",
     // "0x5": "0xbdf2bd70d5dc78dce008b337d889b50c217c6eb7",
     // "0xa": "0x1597e36560a4935e8ba40520d2f3037fd111054c",
-    "0xaa36a7": "0x8a4a9e36106ee290811b89e06e2fafe913507965",
+    "0xa4b1": "0x0444ae984b9563c8480244693ed65f25b3c64a4e",
   },
 
   GNOSIS_SAFE_PROXY_FACTORY: {
     // "0x1": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2",
     // "0x5": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2",
     // "0xa": "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc",
-    "0xaa36a7": "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc",
+    "0xa4b1": "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc",
   },
   GNOSIS_SAFE_MASTER_COPY: {
     // "0x1": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
     // "0x5": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
     // "0xa": "0xfb1bffc9d739b8d520daf37df666da4c687191ea", // "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
-    "0xaa36a7": "0x69f4d1788e39c87893c980c06edf4b7f686e2938",
+    "0xa4b1": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
   },
   UNISWAP_V3_NF_POSITION_MANAGER: {
-    "0xaa36a7": "0x1238536071E1c677A632429e3655c799b22cDA52",
+    "0xa4b1": "",
   },
   WETH: {
-    "0xaa36a7": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+    "0xa4b1": "",
   },
 };
 
@@ -106,11 +106,11 @@ export const DEFAULT_CHAIN_ID = "0xaa36a7";
 export const CHAIN_OBJ: {
   [key: string]: Chain;
 } = {
-  "0xaa36a7": sepolia,
+  "0xa4b1": arbitrum,
 };
 
 export const RPC_URLS: KEYCHAIN = {
-  "0xaa36a7": HAUS_RPC["0xaa36a7"],
+  "0xa4b1": HAUS_RPC["0xa4b1"],
 };
 
 export const getValidChainId = (chainId?: string) => {
