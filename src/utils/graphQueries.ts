@@ -121,3 +121,53 @@ export const GET_YEETS_BY_TX = gql`
     }
   }
 `;
+
+export const GET_RAGEQUITS = gql`
+  {
+    rageQuits(
+      where: {
+        dao_: {
+          referrer: "${YEET24_REFERRER}"
+        }
+       }
+      orderBy: createdAt
+      orderDirection: desc
+      first: 1000
+    ) {
+      id
+      createdAt
+      shares
+      member {
+        memberAddress
+      }
+      dao {
+        id
+        referrer
+        shareTokenSymbol
+      }
+    }
+  }
+`;
+
+export const GET_RAGEQUITS_DAO = gql`
+  query rageQuits($daoId: String!) {
+    rageQuits(
+      where: { dao: $daoId }
+      orderBy: createdAt
+      orderDirection: desc
+      first: 1000
+    ) {
+      id
+      createdAt
+      shares
+      member {
+        memberAddress
+      }
+      dao {
+        id
+        referrer
+        shareTokenSymbol
+      }
+    }
+  }
+`;

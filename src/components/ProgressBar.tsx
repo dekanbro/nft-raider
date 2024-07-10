@@ -1,10 +1,11 @@
+import { ParLg } from "@daohaus/ui";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export const ProgressVisualFull = styled.div<{ $backgroundColor: string }>`
   background-color: ${({ theme }) => theme.warning.step8};
   display: flex;
-  height: 5rem;
+  height: 10rem;
   border-radius: 20px;
   box-shadow: 3px 3px ${({ theme }) => theme.warning.step1};
 `;
@@ -20,55 +21,55 @@ export const ProgressVisualPart = styled.div<{
   border-radius: 19px;
 `;
 
+const Moons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 7.5rem;
+
+`;
+
 type ProgressProps = {
   backgroundColor: string;
   progressSection: {
-    percentage: string;
+    percentage: number;
     color: string;
-  }[];
+  };
 };
 
 export const ProgressBar = ({
   backgroundColor,
-  progressSection = [
-    {
-      percentage: "0%",
+  progressSection =  {
+      percentage: 0,
       color: "transparent",
     },
-  ],
+  
 }: ProgressProps) => {
-  // Starting values needed for the animation
-  // Mapped by "progressSection" so it can work with multiple values dynamically
-  const [widths, setWidths] = useState(
-    progressSection.map(() => {
-      return "0%";
-    })
-  );
 
-  useEffect(() => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
-    // You need to wrap it to trigger the animation
-    requestAnimationFrame(() => {
-      // Set a new array of percentage widths based on the props
-      setWidths(
-        progressSection.map((item) => {
-          return item.percentage;
-        })
-      );
-    });
-  }, [progressSection]);
+  const stages = ['🌑', '🌘', '🌗', '🌖', '🌕'];
+  const totalMoons = 10;
+  const currentMoonIndex = Math.floor(progressSection.percentage / 10);
+  const currentMoonStage = Math.floor(progressSection.percentage) % 5;
+
+  const generateMoonProgressBar = () => {
+    let progressBar = '';
+    for (let i = 0; i < totalMoons; i++) {
+      if (i < currentMoonIndex) {
+        progressBar += stages[4]; // Full moon for completed sections
+      } else if (i === currentMoonIndex) {
+        progressBar += stages[currentMoonStage]; // Current stage for the current section
+      } else {
+        progressBar += stages[0]; // New moon for future sections
+      }
+    }
+    return progressBar;
+  };
+
 
   return (
     <ProgressVisualFull $backgroundColor={backgroundColor}>
-      {progressSection.map((item, index) => {
-        return (
-          <ProgressVisualPart
-            key={index}
-            width={widths[index]}
-            $backgroundColor={item.color}
-          />
-        );
-      })}
+      <Moons>{generateMoonProgressBar()}</Moons>
     </ProgressVisualFull>
   );
 };

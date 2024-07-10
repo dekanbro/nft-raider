@@ -81,7 +81,7 @@ export const YeeterDetails = ({
     return
   }
 
-  const campaignStatus = getCampaignStatus(yeeter, executed || false, canExecute || false);
+  const campaignStatus = getCampaignStatus(yeeter, executed || false, canExecute || false, executed || false);
 
   return (
     <Card width={"800px"}>

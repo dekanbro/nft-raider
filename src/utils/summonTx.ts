@@ -78,7 +78,7 @@ export const assembleMemeSummonerArgs = (args: ArbitraryState) => {
   console.log(">>>>> args", args);
 
   const memberAddress = args.appState.memberAddress as EthAddress;
-  const formValues = args.appState.formValues as FormValuesWithTags;
+  const formValues = args.appState.formValues as Record<string, unknown>;
   const chainId = args.chainId as ValidNetwork;
   let txArgs: [string, string, string, string[], string];
   console.log(">>>>> start", formValues, memberAddress, chainId);
@@ -339,17 +339,13 @@ const assembleShamanParams = ({
 };
 
 
-interface FormValuesWithTags extends Record<string, unknown> {
-  tags: string[];
-}
-
 const assembleInitActions = ({
   formValues,
   memberAddress,
   chainId,
   saltNonce,
 }: {
-  formValues: FormValuesWithTags;
+  formValues: Record<string, unknown>;
   memberAddress: EthAddress;
   chainId: ValidNetwork;
   saltNonce: string;
@@ -445,8 +441,8 @@ const tokenDistroTX = (formValues: SummonParams, memberAddress: EthAddress) => {
 };
 
 
-const metadataConfigTX = (formValues: FormValuesWithTags, memberAddress: EthAddress, posterAddress: string) => {
-  const { daoName, calculatedDAOAddress, body, image, description, paramTag, tags } = formValues;
+const metadataConfigTX = (formValues: Record<string, unknown>, memberAddress: EthAddress, posterAddress: string) => {
+  const { daoName, calculatedDAOAddress, body, image, description, paramTag } = formValues;
 
   if (!isString(daoName)) {
     console.log("ERROR: Form Values", formValues);
@@ -464,7 +460,7 @@ const metadataConfigTX = (formValues: FormValuesWithTags, memberAddress: EthAddr
                 longDescription: body || "",
                 avatarImg: image || "", 
                 title: `${daoName} tst`,
-                tags: ["NFT Raid", "Incarnation", paramTag || "topic", ...tags],
+                tags: ["NFT Raid", "Incarnation", paramTag || "topic", ],
                 authorAddress: memberAddress,
                 // parentId: 0
               };

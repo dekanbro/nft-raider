@@ -143,13 +143,17 @@ export const calcPercToGoal = (yeeter: YeeterItem) => {
 
 
 
-export const getCampaignStatus = (yeeter: YeeterItem, executed: boolean, canExecute: boolean) => {
+export const getCampaignStatus = (
+  yeeter: YeeterItem,
+  executed: boolean,
+  canExecute: boolean,
+  goalAchieved: boolean
+) => {
   // campaign over and executed success
   // campaign over and can be executed
   // campaign over and fail to meet goal
   // campaign active
   // campaign coming soon
-
 
   const statusEnum = {
     SUCCESS: "SUCCESS",
@@ -160,9 +164,9 @@ export const getCampaignStatus = (yeeter: YeeterItem, executed: boolean, canExec
   };
 
   if (yeeter.isEnded) {
-    if (executed) {
+    if (executed && goalAchieved) {
       return statusEnum.SUCCESS;
-    } else if (canExecute) {
+    } else if (goalAchieved && canExecute) {
       return statusEnum.CAN_EXECUTE;
     } else {
       return statusEnum.FAIL;
@@ -173,9 +177,9 @@ export const getCampaignStatus = (yeeter: YeeterItem, executed: boolean, canExec
     return statusEnum.ACTIVE;
   }
 
-  if (yeeter.isComingSoon) {
+  if (yeeter.isComing) {
     return statusEnum.COMING_SOON;
   }
 
   return statusEnum.ACTIVE;
-}
+};

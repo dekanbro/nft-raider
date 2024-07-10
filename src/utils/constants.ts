@@ -94,6 +94,15 @@ export const YEETER_GRAPH_URL: KEYCHAIN = {
   }/subgraphs/id/6vyAqRpCyrhLsfd6TfYAssvKywKhxJykkDbPxJZ4ZcEr`,
 };
 
+export const DH_GRAPH_URL: KEYCHAIN = {
+  "0xaa36a7": `https://gateway-arbitrum.network.thegraph.com/api/${
+    import.meta.env.VITE_YEETER_GRAPH_API_KEY
+  }/subgraphs/id/3k93SNY5Y1r4YYWEuPY9mpCm2wnGoYDKRtk82QZJ3Kvw`,
+  "0x2105": `https://gateway-arbitrum.network.thegraph.com/api/${
+    import.meta.env.VITE_YEETER_GRAPH_API_KEY
+  }/subgraphs/id/7yh4eHJ4qpHEiLPAk9BXhL5YgYrTrRE6gWy8x4oHyAqW`,
+};
+
 export const targetNetworks: Keychain<NetworkConfig> = {
   "0xaa36a7": HAUS_NETWORK_DATA["0xaa36a7"],
   "0x64": HAUS_NETWORK_DATA["0x64"],

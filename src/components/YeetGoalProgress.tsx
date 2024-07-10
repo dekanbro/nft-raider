@@ -67,9 +67,10 @@ if (!tokenBalance) {
 }
 
   const percentageComplete = yeeter
-    ? `${calcProgressPerc(tokenBalance.balance , yeeter.goal)}%`
-    : "0%";
+    ? calcProgressPerc(tokenBalance.balance , yeeter.goal)
+    : 0;
 
+    console.log ("percentageComplete???????????????????", percentageComplete);
   return (
     <> 
       {!yeeter.isComingSoon && (
@@ -88,9 +89,8 @@ if (!tokenBalance) {
           />
           <div className="bar">
             <ProgressBar
-              progressSection={[
-                { percentage: percentageComplete, color: "green" },
-              ]}
+              progressSection={ {percentage: percentageComplete, color: "green"} }
+              
               backgroundColor="black"
             />
           </div>
