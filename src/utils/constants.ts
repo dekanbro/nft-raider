@@ -9,11 +9,11 @@ import {
   ValidNetwork,
 } from "@daohaus/keychain-utils";
 
-export const MEME_YEETER_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.3";
-export const NFT_ESCROW_SUMMONER_REFERRER = "NFTEscrowShamanSummoner.3";
+export const MEME_YEETER_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.5";
+export const NFT_ESCROW_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.5" // "NFTEscrowShamanSummoner.5";
 export const NFT_ESCROW_NAME = "YeetNftEscrowShamanModule";
 
-export const YEET24_REFERRER = "DHYeet24ShamanSummoner.3";
+export const YEET24_REFERRER = "DHYeet24ShamanSummoner.5";
 export const YEET24_NAME = "Yeet24ShamanModule";
 
 
@@ -101,7 +101,7 @@ export const targetNetworks: Keychain<NetworkConfig> = {
   "0xa4b1": HAUS_NETWORK_DATA["0xa4b1"],
   "0x2105": HAUS_NETWORK_DATA["0x2105"],
 };
-export const DEFAULT_CHAIN_ID = "0xaa36a7";
+export const DEFAULT_CHAIN_ID = "0xa4b1";
 
 export const CHAIN_OBJ: {
   [key: string]: Chain;
