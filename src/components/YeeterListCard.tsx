@@ -173,7 +173,7 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
             color={theme.warning.step10}
             className={hasJump ? "jump-shake-rev" : ""}
           >
-            Presale Ends {formatTimeRemainingShort(yeeter)}
+            Raid Ends {formatTimeRemainingShort(yeeter)}
           </TimeDataLg>
         )}
 
@@ -182,7 +182,7 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
             color={theme.success.step10}
             className={hasJump ? "jump-shake-rev" : ""}
           >
-            Presale Starts {formatTimeUntilPresale(yeeter)}
+            Raid Starts {formatTimeUntilPresale(yeeter)}
           </TimeDataLg>
         )}
 
