@@ -7,6 +7,7 @@ createdAt
 dao {
   id
   referrer
+  shareTokenSymbol
 }
 endTime
 startTime

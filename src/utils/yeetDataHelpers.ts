@@ -90,6 +90,7 @@ export const formatMemberBalance = (balance: string) => {
 };
 
 export const formatLootForMin = (yeeter: YeeterItem) => {
+  console.log("yeeter.minTribute", yeeter);
   const loot = BigInt(yeeter.minTribute) * BigInt(yeeter.multiplier);
   return formatValueTo({
     value: fromWei(loot.toString()),
@@ -177,7 +178,7 @@ export const getCampaignStatus = (
     return statusEnum.ACTIVE;
   }
 
-  if (yeeter.isComing) {
+  if (yeeter.isComingSoon) {
     return statusEnum.COMING_SOON;
   }
 

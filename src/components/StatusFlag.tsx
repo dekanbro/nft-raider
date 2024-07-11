@@ -1,38 +1,52 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { YeeterItem } from "../utils/types";
 import { Badge } from "@daohaus/ui";
 
+const tiltShake = keyframes`
+  0% { transform: translateX(0) }
+  25% { transform: translateX(5px) }
+  50% { transform: translateX(-5px) }
+  75% { transform: translateX(5px) }
+  100% { transform: translateX(0) }
+`;
+
 const BadgeContainer = styled.div`
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  display: flex;
+  flex-direction: column;
+  animation: ${tiltShake} 0.3s infinite;
 `;
 
 const StyledBadge = styled(Badge)`
- p {
+  border-radius: 0px;
+  border-color: black;
+  padding: 0.5rem 0.75rem;
+  background-color: ${({ theme }) => theme.secondary.step10};
+  p {
     font-family: "Syne Mono", monospace;
-    }
-
-  &.comingSoon {
-    background-color: ${({ theme }) => theme.success.step5};
-  }
-  &.endingSoon {
-      background-color: ${({ theme }) => theme.danger.step5};
-  }
-  &.new {
-      background-color: ${({ theme }) => theme.info.step5};
   }
 `;
 
-
-
 export const StatusFlag = ({ yeeter }: { yeeter?: YeeterItem }) => {
+  return (
+    <BadgeContainer>
+      {yeeter?.isComingSoon && (
+        <StyledBadge
+          className="comingSoon"
+          badgeLabel="coming soon"
+          badgeSize="sm"
+        />
+      )}
+      {yeeter?.isEndingSoon && (
+        <StyledBadge
+          className="endingSoon"
+          badgeLabel="ending soon"
+          badgeSize="sm"
+        />
+      )}
 
-    return (
-        <BadgeContainer>
-            {yeeter?.isComingSoon && <StyledBadge className="comingSoon" badgeLabel="⏰ coming soon" badgeSize="lg" />}
-            {yeeter?.isEndingSoon && <StyledBadge className="endingSoon" badgeLabel="🚩 ending soon" badgeSize="lg" />}
-            {yeeter?.isNew && <StyledBadge className="new" badgeLabel="⭐ new" badgeSize="lg" />}
-        </BadgeContainer>
-    );
+      {yeeter?.isNew && (
+        <StyledBadge className="new" badgeLabel="new" badgeSize="sm" />
+      )}
+    </BadgeContainer>
+  );
 };

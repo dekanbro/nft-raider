@@ -1,41 +1,68 @@
-import styled, { useTheme } from "styled-components";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-
+import styled, { useTheme, keyframes } from "styled-components";
 import { useYeeter } from "../hooks/useYeeter";
-import { DEFAULT_CHAIN_ID } from "../utils/constants";
 import { YeeterItem } from "../utils/types";
-import {
-  Badge,
-  Button,
-  Card,
-  DataLg,
-  DataXs,
-  ParLg,
-  ParMd,
-  ParXl,
-} from "@daohaus/ui";
-
-import RobotArm from "../assets/robot-hand-yellow.png";
-import { EthAddress, formatValueTo, fromWei } from "@daohaus/utils";
+import { Button, Card, DataLg, DataXs, ParLg, ParMd, ParSm, ParXl } from "@daohaus/ui";
+import CoinPile from "../assets/coin-pile-trans.png";
+import { formatValueTo, fromWei } from "@daohaus/utils";
 import {
   calcPercToGoal,
   formatTimeRemainingShort,
   formatTimeUntilPresale,
   getCampaignStatus,
 } from "../utils/yeetDataHelpers";
-
-import { ButtonRouterLink } from "./ButtonRouterLink";
 import BuyButton from "./BuyButton";
 import { StatusFlag } from "./StatusFlag";
-import { useDaoData, useDaoMember } from "@daohaus/moloch-v3-hooks";
-import { useDHConnect } from "@daohaus/connect";
+import { useDaoMember } from "@daohaus/moloch-v3-hooks";
 import { ValidNetwork } from "@daohaus/keychain-utils";
-import ExitButton from "./ExitButton";
+import { useDHConnect } from "@daohaus/connect";
 import { useEscrow } from "../hooks/useEscrow";
+import ExitButton from "./ExitButton";
+
+import { useDaoData } from "../hooks/useDaoData";
+import { Link } from "react-router-dom";
+import { DEFAULT_CHAIN_ID } from "../utils/constants";
+
+const tiltShaking = keyframes`
+  0% { transform: translateY(0) }
+  25% { transform: translateY(5px) }
+  50% { transform: translateY(-5px) }
+  75% { transform: translateY(5px) }
+  100% { transform: translateY(0) }
+`;
+
+const jumpShake = keyframes`
+  0% { transform: skewY(-15deg); }
+  5% { transform: skewY(15deg); }
+  10% { transform: skewY(-15deg); }
+  15% { transform: skewY(15deg); }
+  20% { transform: skewY(0deg); }
+  100% { transform: skewY(0deg); }  
+`;
+
+const jumpShakeRev = keyframes`
+  0% { transform: skewY(15deg); }
+  5% { transform: skewY(-15deg); }
+  10% { transform: skewY(15deg); }
+  15% { transform: skewY(-15deg); }
+  20% { transform: skewY(0deg); }
+  100% { transform: skewY(0deg); }  
+`;
 
 const SpacedCard = styled(Card)`
   margin-right: 1rem;
   width: 35rem;
+
+  .tilt-shake {
+    animation: ${tiltShaking} 0.3s infinite;
+  }
+
+  .jump-shake {
+    animation: ${jumpShake} 0.3s infinite;
+  }
+
+  .jump-shake-rev {
+    animation: ${jumpShake} 0.3s infinite;
+  }
 `;
 
 const TopSectionContainer = styled.div`
@@ -71,10 +98,16 @@ const TimeDataLg = styled(DataLg)`
   padding: 1rem;
 `;
 
-
+const LinkButton = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+`;
 
 export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
-  const {address, chainId} = useDHConnect();
+  const { address } = useDHConnect();
+  const chainId = DEFAULT_CHAIN_ID;
 
   const { metadata, yeeter } = useYeeter({
     daoId: yeeterData.dao.id,
@@ -82,47 +115,72 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
     chainId: chainId,
     yeeterData,
   });
-  const { dao } = useDaoData({ daoId: yeeterData.dao.id, daoChain: chainId as ValidNetwork });
-  const { member } = useDaoMember({ daoChain: chainId as ValidNetwork, daoId: yeeterData.dao.id, memberAddress: address });
+  const theme = useTheme();
 
-  const { nftEscrowShaman, canExecute, executed } = useEscrow({
+  const { dao } = useDaoData({
+    daoId: yeeterData.dao.id,
+    daoChain: chainId as ValidNetwork,
+  });
+  const { member } = useDaoMember({
+    daoChain: chainId as ValidNetwork,
+    daoId: yeeterData.dao.id,
+    memberAddress: address,
+  });
+
+  const { canExecute, executed, goalAchieved } = useEscrow({
     daoId: yeeterData.dao.id,
     yeeterShamanAddress: yeeterData.id,
     chainId: chainId,
     daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
   });
 
-  const theme = useTheme();
-
   if (!metadata || !yeeter) return null;
 
-  const campaignStatus = getCampaignStatus(yeeter, executed || false, canExecute || false, executed || false);
+  const campaignStatus = getCampaignStatus(
+    yeeter,
+    executed || false,
+    canExecute || false,
+    goalAchieved || false
+  );
+
+  const hasRumble = yeeter.isComingSoon || yeeter.isEndingSoon || yeeter.isNew;
+  const hasJump = yeeter.isComingSoon || yeeter.isEndingSoon;
 
   return (
     <SpacedCard>
-      <StatusFlag yeeter={yeeter} />
-      <TopSectionContainer>
+      <TopSectionContainer className={hasRumble ? "tilt-shake" : ""}>
         {metadata.avatarImg && metadata.avatarImg !== "" ? (
           <img src={metadata.avatarImg} height="100px" />
         ) : (
-          <img src={RobotArm} height="100px" />
+          <ParSm>img?</ParSm>
         )}
       </TopSectionContainer>
       <DataCol>
-        <TokenNameParXl>{yeeter.dao.shareTokenSymbol }</TokenNameParXl>
-
+        <TokenNameParXl className={hasJump ? "jump-shake" : ""}>
+          {yeeter.dao.shareTokenSymbol}
+        </TokenNameParXl>
         <DataXs>{metadata.name}</DataXs>
+
         {yeeter.isActive && (
-          <TimeDataLg color={theme.warning.step10}>
-            RAID Ends {formatTimeRemainingShort(yeeter)}
+          <TimeDataLg
+            color={theme.warning.step10}
+            className={hasJump ? "jump-shake-rev" : ""}
+          >
+            Presale Ends {formatTimeRemainingShort(yeeter)}
           </TimeDataLg>
         )}
 
-        {yeeter.isComingSoon && (
-          <TimeDataLg color={theme.success.step10}>
-            RAID Starts {formatTimeUntilPresale(yeeter)}
+        {yeeter.isComing && (
+          <TimeDataLg
+            color={theme.success.step10}
+            className={hasJump ? "jump-shake-rev" : ""}
+          >
+            Presale Starts {formatTimeUntilPresale(yeeter)}
           </TimeDataLg>
         )}
+
+        <StatusFlag yeeter={yeeter} />
+
         {yeeter.isActive && (
           <>
             <ParMd>
@@ -138,38 +196,36 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
 
         {yeeter.isEnded && (
           <>
-            {executed ? (<ParMd>Reached Goal</ParMd>) : (<ParMd>
-              {`${formatValueTo({
-                value: fromWei(yeeter.safeBalance.toString()),
-                decimals: 5,
-                format: "number",
-              })} ETH Raised`}
-            </ParMd>)}
+            {campaignStatus == "SUCCESS" ? (
+              <ParMd>Reached Goal</ParMd>
+            ) : (
+              <ParMd>
+                {`${formatValueTo({
+                  value: fromWei(yeeter.safeBalance.toString()),
+                  decimals: 5,
+                  format: "number",
+                })} ETH Raised`}
+              </ParMd>
+            )}
             <ParLg>{campaignStatus}</ParLg>
           </>
         )}
+
         {yeeter.isActive && (
           <BuyButton
             daoChain={chainId as ValidNetwork}
             daoId={yeeter.dao.id}
             yeeterId={yeeter.id}
             metadata={metadata}
-            context="details"
+            context="dashboard"
             tokenSymbol={yeeter.dao.shareTokenSymbol}
           />
         )}
 
-        {campaignStatus == "EXECUTED" && (
-          <Button
-            size="lg"
-            fullWidth={true}
-            style={{ marginTop: "2rem" }}
-            variant="outline"
-          >
-            SWAP
-          </Button>
+        {campaignStatus == "SUCCESS" && (
+          <Button size="sm" variant="outline">Market</Button>
         )}
-        {campaignStatus == "EXECUTED" && Number(member?.shares) > 0 && (
+        {campaignStatus == "SUCCESS" && Number(member?.shares) > 0 && (
           <ExitButton
             daoChain={chainId as ValidNetwork}
             yeeterId={yeeter.id}
@@ -178,30 +234,13 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
         )}
 
         <div className="detailsLink">
-          <ButtonRouterLink
-            to={`molochv3/${chainId}/${yeeter.dao.id}/${yeeter.id}`}
-          >
-            DYOR <HiOutlineArrowNarrowRight />
-          </ButtonRouterLink>
+          <LinkButton to={`molochv3/${chainId}/${yeeter.dao.id}/${yeeter.id}`}>
+            <Button size="sm" style={{ marginTop: "2rem" }} variant="outline">
+              BANG IT
+            </Button>
+          </LinkButton>
         </div>
       </DataCol>
     </SpacedCard>
   );
 };
-
-// <Container>
-// <div>
-//   <p>yeeter data</p>
-//   <pre>{JSON.stringify(yeeter, null, 2)}</pre>
-// </div>
-// <div>
-//   <p>metadata</p>
-
-//   <pre>{JSON.stringify(metadata, null, 2)}</pre>
-// </div>
-// </Container>
-// <ButtonRouterLink
-// to={`/molochv3/${DEFAULT_CHAIN_ID}/${yeeterData.dao.id}/${yeeterData.id}`}
-// >
-// YEET
-// </ButtonRouterLink>

@@ -117,7 +117,7 @@ export const PresalePhase = ({
   return (
     <div>
       <BigH2>RAIDING</BigH2>
-      {yeeter.isComing && (
+      {yeeter.isComingSoon && (
         <>
           <BigH3>INTO TO THE MOON RISE</BigH3>
           <DetailItemWarning>
