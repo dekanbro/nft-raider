@@ -20,7 +20,7 @@ export const SimpleCol = styled.div`
 `;
 
 export const BigH1Blue = styled(H1)`
-  font-size: 20rem;
+  font-size: 10rem;
   line-height: 12rem;
   color: ${({ theme }) => theme.secondary.step11};
   word-break: break-all;

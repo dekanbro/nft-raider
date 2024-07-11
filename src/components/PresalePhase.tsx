@@ -43,9 +43,10 @@ const DetailItemWarning = styled.div`
 `;
 
 export const BigH2 = styled(H2)`
-  font-size: 18rem;
+  font-size: calc(10vw);
   line-height: 12rem;
   word-break: break-all;
+  padding: 1rem;
   @media ${widthQuery.sm} {
     font-size: 10rem;
     line-height: 6rem;
