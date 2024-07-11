@@ -134,13 +134,13 @@ export const NFTESCROW_SHAMAN_PERMISSIONS = "1"; // admin only
 export const SHARE_NAME = "";
 export const SHARE_SYMBOL = "";
 export const LOOT_NAME = "Community Power";
-export const LOOT_SYMBOL = "LOOT";
+export const LOOT_SYMBOL = "-LOOT";
 export const DEFAULT_SUMMON_VALUES = {
-  //votingPeriodInSeconds: 259200,
-  votingPeriodInSeconds: 200,
-  // gracePeriodInSeconds: 172800,
-  gracePeriodInSeconds: 6,
-  newOffering: "10000000000000000",
+  votingPeriodInSeconds: 259200,
+  // votingPeriodInSeconds: 200,
+  gracePeriodInSeconds: 172800,
+  // gracePeriodInSeconds: 6,
+  newOffering: "1000000000000000",
   //   quorum: "20",
   quorum: "20",
   sponsorThreshold: SPONSOR_THRESHOLD,

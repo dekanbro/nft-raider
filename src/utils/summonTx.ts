@@ -35,7 +35,8 @@ import {
   DEFAULT_YEETER_VALUES,
   DEFAULT_MEME_YEETER_VALUES,
   DEFAULT_NFTESCROW_YEETER_VALUES,
-  NFTESCROW_SHAMAN_PERMISSIONS
+  NFTESCROW_SHAMAN_PERMISSIONS,
+  LOOT_SYMBOL
 } from "./constants";
 import { createEthersContract } from "@daohaus/tx-builder";
 import { BigNumber, ethers } from "ethers";
@@ -155,7 +156,7 @@ const assembleLootTokenParams = ({
   }
   console.log(">>>>> assembleLootTokenParams", daoName, tokenSymbol);
 
-  const lootParams = encodeValues(["string", "string"], [daoName, tokenSymbol]);
+  const lootParams = encodeValues(["string", "string"], [daoName, tokenSymbol + " " + LOOT_SYMBOL]);
 
   return encodeValues(["address", "bytes"], [lootSingleton, lootParams]);
 };
