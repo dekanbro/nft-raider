@@ -60,6 +60,10 @@ export const LIST_YEETS = gql`
       amount
       shares
       message
+      dao {
+        id
+        shareTokenSymbol
+      }
     }
   }
 `;
@@ -83,6 +87,10 @@ export const LATEST_YEETS = gql`
       message
       yeeter {
         id
+      }
+      dao {
+        id
+        shareTokenSymbol
       }
     }
   }

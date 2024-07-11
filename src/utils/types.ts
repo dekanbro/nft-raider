@@ -42,7 +42,7 @@ export type YeetsItem = {
   shares: string;
   dao: {
     id: string;
-    lootTokenSymbol: string;
+    shareTokenSymbol: string;
   };
 };
 

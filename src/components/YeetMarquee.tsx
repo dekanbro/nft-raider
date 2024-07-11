@@ -40,7 +40,7 @@ export const YeetMarquee = ({
       return {
         amount: yeet.amount,
         description: yeet.message,
-        symbol: "SPAM",
+        symbol: yeet.dao.shareTokenSymbol,
         verb: "yeeted into",
         createdAt: yeet.createdAt,
       };
@@ -48,7 +48,7 @@ export const YeetMarquee = ({
 
     const normalizedYeeters = yeeters.map((yeeter) => {
       return {
-        symbol: "SPAM",
+        symbol: yeeter.dao.shareTokenSymbol,
         verb: "token launched: ",
         createdAt: yeeter.createdAt,
       };
