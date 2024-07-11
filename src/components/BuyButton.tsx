@@ -58,6 +58,7 @@ const BuyButton = ({
   const navigate = useNavigate();
   const { chainId } = useDHConnect();
 
+
   const [txSuccess, setTxSuccess] = useState(false);
   const [open, setOpen] = useState(false);
   const [pollSuccess, setPollSuccess] = useState<boolean>(false);
@@ -153,7 +154,7 @@ const BuyButton = ({
                   <ParMd>{`YEETED! I'm doing my part!`}</ParMd>
                   {context == "dashboard" && (
                     <ButtonRouterLink
-                      to={`/molochv3/${chainId}/${daoId}/${yeeterId}`}
+                      to={`/molochv3/${DEFAULT_CHAIN_ID}/${daoId}/${yeeterId}`}
                     >
                       <ParMd>See your YEET and others here</ParMd>
                     </ButtonRouterLink>

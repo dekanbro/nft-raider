@@ -11,6 +11,7 @@ import {
   calculateNftEscrowShamanAddress,
   generateShamanSaltNonce,
 } from "../../utils/summonTx";
+import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 
 export const ShamanAddress = (props: Buildable<Field>) => {
   const { watch, setValue } = useFormContext();
@@ -38,7 +39,7 @@ export const ShamanAddress = (props: Buildable<Field>) => {
         shamanPermission: shamanPermissions,
         shamanSingleton: shamanTemplate,
       } = assembleNftEscrowYeeterShamanParams({
-        chainId: chainId as ValidNetwork,
+        chainId: DEFAULT_CHAIN_ID as ValidNetwork,
         formValues,
         memberAddress: "0x",
       });
@@ -64,7 +65,7 @@ export const ShamanAddress = (props: Buildable<Field>) => {
       setValue(props.id, shamanAddress);
     };
 
-    if (baalAddress && saltNonce && chainId) {
+    if (baalAddress && saltNonce && DEFAULT_CHAIN_ID) {
       console.log(
         "****getting saltNonce to get shaman",
         baalAddress,
@@ -72,7 +73,7 @@ export const ShamanAddress = (props: Buildable<Field>) => {
       );
       getShamanAddress();
     }
-  }, [baalAddress, saltNonce, chainId, startDate, endDate, nftAddress, tokenId, minSalePrice, sellerAddress]);
+  }, [baalAddress, saltNonce, DEFAULT_CHAIN_ID, startDate, endDate, nftAddress, tokenId, minSalePrice, sellerAddress]);
 
   return null;
 };

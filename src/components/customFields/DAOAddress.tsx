@@ -7,6 +7,7 @@ import { Buildable, Field } from "@daohaus/ui";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { useDHConnect } from "@daohaus/connect";
 import { calculateDAOAddress } from "../../utils/summonTx";
+import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 
 
 export const DAOAddress = (props: Buildable<Field>) => {
@@ -21,7 +22,7 @@ export const DAOAddress = (props: Buildable<Field>) => {
 
     const getDAOAddress = async () => {
       if (!saltNonce || !chainId) return;
-      const daoAddress = await calculateDAOAddress(saltNonce, chainId as ValidNetwork);
+      const daoAddress = await calculateDAOAddress(saltNonce, DEFAULT_CHAIN_ID as ValidNetwork);
       console.log("daoAddress >>>>>>", props.id, daoAddress);
       setValue(props.id, daoAddress.toLowerCase());
     };

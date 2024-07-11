@@ -8,6 +8,7 @@ import { useDHConnect } from "@daohaus/connect";
 import { calculateCreateProxyWithNonceAddress } from "../../utils/summonTx";
 import { SafeInfo } from "../../utils/safes";
 import { IFindQueryResult } from "@daohaus/data-fetch-utils";
+import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 
 export const ManagerAddress = (props: Buildable<Field>) => {
   const { watch, setValue } = useFormContext();
@@ -19,11 +20,11 @@ export const ManagerAddress = (props: Buildable<Field>) => {
   useEffect(() => {
     const getTreasuryAddress = async () => {
       
-      setValue("calculatedTreasuryAddress", await calculateCreateProxyWithNonceAddress(saltNonce, chainId as ValidNetwork));
+      setValue("calculatedTreasuryAddress", await calculateCreateProxyWithNonceAddress(saltNonce, DEFAULT_CHAIN_ID as ValidNetwork));
     };
 
 
-    if (saltNonce && chainId) {
+    if (saltNonce && DEFAULT_CHAIN_ID) {
       getTreasuryAddress();
 
     }

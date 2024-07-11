@@ -6,6 +6,7 @@ import { TXBuilder } from "@daohaus/tx-builder";
 import { Footer, MainLayout, OuterLayout, widthQuery } from "@daohaus/ui";
 import { Brand } from "./Brand";
 import { assembleMemeSummonerArgs } from "../utils/summonTx";
+import { DEFAULT_CHAIN_ID } from "../utils/constants";
 
 const Header = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export const LayoutContainer = () => {
   return (
     <TXBuilder
       publicClient={publicClient}
-      chainId={chainId}
+      chainId={DEFAULT_CHAIN_ID}
       appState={{ memberAddress: address?.toLowerCase() }}
       argCallbackRecord={{
         assembleMemeSummonerArgs: assembleMemeSummonerArgs,

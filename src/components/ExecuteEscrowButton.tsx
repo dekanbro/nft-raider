@@ -87,7 +87,7 @@ const ExecuteEscrowButton = ({
                         {canExecute ? (<FormBuilder
                             form={APP_FORM.EXECUTE_ESCROW_FORM}
                             customFields={AppFieldLookup}
-                            targetNetwork={chainId}
+                            targetNetwork={daoChain}
                             submitButtonText="YEET"
                             lifeCycleFns={{
                                 onPollSuccess: (result) => {

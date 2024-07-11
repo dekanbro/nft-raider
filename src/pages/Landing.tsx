@@ -19,6 +19,8 @@ import { YeeterList } from "../components/YeeterList";
 import { Spacer } from "../components/Layout";
 import { useLatestYeets } from "../hooks/useLatestYeets";
 import { YeetMarquee } from "../components/YeetMarquee";
+import { useMyYeeters } from "../hooks/useMyYeeters";
+import { useState } from "react";
 
 const LinkButton = styled(RouterLink)`
   text-decoration: none;
@@ -34,13 +36,22 @@ const Landing = () => {
   const { allYeeters, activeYeetrs, upcomingYeeters, finishedYeeters } =
     useYeeters({ chainId: DEFAULT_CHAIN_ID });
 
+  const { myYeeters } = useMyYeeters({
+    chainId: DEFAULT_CHAIN_ID,
+    account: address,
+  });
+
   const { yeets } = useLatestYeets({ chainId: DEFAULT_CHAIN_ID });
+
+  const [mine, setMine] = useState(false);
+
+  const hasMyYeeters = myYeeters.length > 0;
 
   console.log("activeYeetrs", activeYeetrs);
 
   return (
     <>
-      {chainId && chainId in supportedNetorks ? (
+
         <SingleColumnLayout
           subtitle={"Welcome to the NFT Escrow summoner".toUpperCase()}
           title="NFT ESCROW YEETER - Decentralized NFT Raids"
@@ -84,6 +95,16 @@ const Landing = () => {
                   yeeters={finishedYeeters}
                 />
               )}
+                {finishedYeeters && (
+            <YeeterList
+              title="Completed Presale"
+              yeeters={hasMyYeeters && mine ? myYeeters : finishedYeeters}
+              canToggle={hasMyYeeters}
+              toggle={mine}
+              setToggle={setMine}
+              rtl={true}
+            />
+          )}
 
               {/* <H6>My Yeeters</H6>
 
@@ -91,17 +112,7 @@ const Landing = () => {
             </Spacer>
           </div>
         </SingleColumnLayout>
-      ) : (
-        <div>
-          {!isConnected && (
-            <>
-              <h1>Not Connected</h1>
-              <p>Please connect your wallet to continue.</p>
-            </>
-          )}
-          {isConnected && <h1>Unsupported Network. Switch to Arbitrum</h1>}
-        </div>
-      )}
+
     </>
   );
 };

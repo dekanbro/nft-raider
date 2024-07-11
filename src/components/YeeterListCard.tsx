@@ -236,7 +236,7 @@ export const YeeterListCard = ({ yeeterData }: { yeeterData: YeeterItem }) => {
         <div className="detailsLink">
           <LinkButton to={`molochv3/${chainId}/${yeeter.dao.id}/${yeeter.id}`}>
             <Button size="sm" style={{ marginTop: "2rem" }} variant="outline">
-              BANG IT
+              MORE
             </Button>
           </LinkButton>
         </div>
