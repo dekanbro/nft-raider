@@ -33,12 +33,21 @@ export const ProgressVisualPart = styled.div<{
 `;
 
 const Moons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  // font-size: 7.5rem;
-  flex-shrink: 1; 
-  min-width: 0;
+  display: flex; // Makes Moons a flex container
+  flex-wrap: nowrap; // Prevents wrapping of its children
+  flex-shrink: 1; // Allows Moons itself to shrink
+  min-width: 0; // Allows shrinking below its content's default size
+  width: 100%; // Takes the full width of its parent
+  
+
+`;
+
+const Moon = styled.span`
+  flex: 1; 
+  text-align: center; 
+
+  font-size: calc(5vw);
+  margin: 0 -5px;
 
 `;
 
@@ -65,15 +74,17 @@ export const ProgressBar = ({
   const currentMoonStage = Math.floor(progressSection.percentage) % 5;
 
   const generateMoonProgressBar = () => {
-    let progressBar = '';
+    let progressBar = [];
     for (let i = 0; i < totalMoons; i++) {
+      let moonStage = '';
       if (i < currentMoonIndex) {
-        progressBar += stages[4]; // Full moon for completed sections
+        moonStage += stages[4]; // Full moon for completed sections
       } else if (i === currentMoonIndex) {
-        progressBar += stages[currentMoonStage]; // Current stage for the current section
+        moonStage += stages[currentMoonStage]; // Current stage for the current section
       } else {
-        progressBar += stages[0]; // New moon for future sections
+        moonStage += stages[0]; // New moon for future sections
       }
+      progressBar.push(<Moon key={i}>{moonStage}</Moon>);
     }
     return progressBar;
   };
