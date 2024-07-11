@@ -1,5 +1,5 @@
 import { styled, useTheme } from "styled-components";
-import { ParXs } from "@daohaus/ui";
+import { ParSm, ParXs } from "@daohaus/ui";
 import Marquee from "react-fast-marquee";
 import { YeeterItem, YeetsItem } from "../utils/types";
 import { useEffect, useState } from "react";
@@ -10,6 +10,8 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   margin-right: 20px;
+  margin-top: 1rem;
+
 `;
 
 // todo: add token symbol here
@@ -71,13 +73,13 @@ export const YeetMarquee = ({
   }, [yeets, yeeters]);
 
   return (
-    <Marquee speed={75} autoFill={true} style={{ maxWidth: "110rem" }}>
+    <Marquee speed={30} autoFill={true} style={{ maxWidth: "150rem" }}>
       {data.map((dataItem, i) => {
         return (
           <Container key={i}>
-            <ParXs color={theme.primary.step9}>
+            <ParSm color={theme.secondary.step10}>
               {formatMarqueeData(dataItem)}
-            </ParXs>
+            </ParSm>
           </Container>
         );
       })}

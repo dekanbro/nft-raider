@@ -13,7 +13,7 @@ const tiltShake = keyframes`
 const BadgeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  animation: ${tiltShake} 0.3s infinite;
+  animation: ${tiltShake} 1s infinite;
 `;
 
 const StyledBadge = styled(Badge)`

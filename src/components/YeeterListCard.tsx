@@ -23,6 +23,13 @@ import { Link } from "react-router-dom";
 import { DEFAULT_CHAIN_ID } from "../utils/constants";
 
 const tiltShaking = keyframes`
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-5px, 5px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+`;
+const tiltShakingRev = keyframes`
   0% { transform: translateY(0) }
   25% { transform: translateY(5px) }
   50% { transform: translateY(-5px) }
@@ -53,15 +60,15 @@ const SpacedCard = styled(Card)`
   width: 35rem;
 
   .tilt-shake {
-    animation: ${tiltShaking} 0.3s infinite;
+    animation: ${tiltShaking} 1s infinite;
   }
 
   .jump-shake {
-    animation: ${jumpShake} 0.3s infinite;
+    animation: ${jumpShake} 1s infinite;
   }
 
   .jump-shake-rev {
-    animation: ${jumpShake} 0.3s infinite;
+    animation: ${jumpShake} 1s infinite;
   }
 `;
 

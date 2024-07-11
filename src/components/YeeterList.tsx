@@ -112,7 +112,7 @@ export const YeeterList = ({
             responsive={responsive}
             infinite={true}
             autoPlay={true}
-            autoPlaySpeed={1250}
+            autoPlaySpeed={5280}
             showDots={false}
             swipeable={true}
             draggable={true}
@@ -120,7 +120,7 @@ export const YeeterList = ({
             pauseOnHover={true}
             renderButtonGroupOutside={true}
             rtl={rtl}
-            customTransition="400ms ease-in-out"
+            customTransition="800ms ease-in-out"
           >
             {yeeters.map((yeeter) => (
               <YeeterListCard yeeterData={yeeter} key={yeeter.id} />
