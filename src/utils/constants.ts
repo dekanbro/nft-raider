@@ -65,6 +65,11 @@ export const CURATOR_CONTRACTS: KeychainList = {
   WETH: {
     "0xa4b1": "",
   },
+  POSTER: {
+    "0xaa36a7": "0x000000000000cd17345801aa8147b8d3950260ff",
+    "0x2105": "0x000000000000cd17345801aa8147b8d3950260ff",
+    "0xa4b1": "0x000000000000cd17345801aa8147b8d3950260ff",
+  },
 };
 
 /// https://docs.tokenbound.org/contracts/deployments

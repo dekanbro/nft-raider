@@ -191,14 +191,15 @@ export const YeetList = ({
               },
               {
                 label: "CAMPAIGN DETAILS",
-                Component: () => <ParLg>Coming Soon</ParLg>,
-                // () => (
-                //   <ContractDetails
-                //     daoId={daoId}
-                //     daoChain={daoChain}
-                //     yeeterId={yeeterId}
-                //   />
-                // ),
+                Component: 
+                // () => <ParLg>Coming Soon</ParLg>,
+                () => (
+                  <ContractDetails
+                    daoId={daoId}
+                    daoChain={daoChain}
+                    yeeterId={yeeterId}
+                  />
+                ),
               },
             ]}
           ></Tabs>
