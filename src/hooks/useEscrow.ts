@@ -32,7 +32,7 @@ export const useEscrow = ({
         transport: http(RPC_URLS[chain]),
       });
 
-      let nftEscrowShaman, goalAchieved, executed, seller, nftAddress, tokenId;
+      let nftEscrowShaman, goalAchieved, executed, seller, nftAddress, tokenId, yeethBalance;
       let canExecute = false;
       for (let i = 0; i < shamanAddresses.length; i++) {
         if (yeeterShamanAddress && shamanAddresses[i] === yeeterShamanAddress) {
@@ -49,7 +49,6 @@ export const useEscrow = ({
         if (shamanName === NFT_ESCROW_NAME) {
           console.log("true..........")
           nftEscrowShaman = shamanAddresses[i];
-          console.log("nftEscrowShaman ~~~~~~~~~~~~~~~~~~~~~~~~~", nftEscrowShaman);
 
           executed = (await publicClient.readContract({
             address: shamanAddresses[i] as `0x${string}`,
@@ -75,11 +74,17 @@ export const useEscrow = ({
             functionName: "tokenId",
           })) as string;
 
-          // canExecute = (await publicClient.readContract({
-          //   address: shamanAddresses[i] as `0x${string}`,
-          //   abi: nftEscrowShamanAbi,
-          //   functionName: "canExecute",
-          // })) as boolean;
+          yeethBalance = (await publicClient.readContract({
+            address: shamanAddresses[i] as `0x${string}`,
+            abi: nftEscrowShamanAbi,
+            functionName: "yeethBalance",
+          })) as string;
+
+          canExecute = (await publicClient.readContract({
+            address: shamanAddresses[i] as `0x${string}`,
+            abi: nftEscrowShamanAbi,
+            functionName: "canExecute",
+          })) as boolean;
 
 
           break;
@@ -94,6 +99,7 @@ export const useEscrow = ({
         nftAddress,
         tokenId,
         canExecute,
+        yeethBalance,
 
       };
     },

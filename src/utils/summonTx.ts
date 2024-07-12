@@ -156,7 +156,7 @@ const assembleLootTokenParams = ({
   }
   console.log(">>>>> assembleLootTokenParams", daoName, tokenSymbol);
 
-  const lootParams = encodeValues(["string", "string"], [daoName, tokenSymbol + " " + LOOT_SYMBOL]);
+  const lootParams = encodeValues(["string", "string"], [daoName, tokenSymbol + LOOT_SYMBOL]);
 
   return encodeValues(["address", "bytes"], [lootSingleton, lootParams]);
 };

@@ -27,10 +27,10 @@ export const CURATOR_CONTRACTS: KeychainList = {
     "0xa4b1": "",
   },
   YEETER2_SINGLETON: {
-    "0xa4b1": "0xD55Ce418a17418FE36254AD71C25f87aA97AFC85",
+    "0xa4b1": "0xd55ce418a17418fe36254ad71c25f87aa97afc85",
   },
   YEETNFTESCROW_SINGLETON: {
-    "0xa4b1": "0xEc0D1f8bAeD05ED6516fE0f9304566115f2DbbdE",
+    "0xa4b1": "0xec0d1f8baed05ed6516fe0f9304566115f2dbbde",
   },
   YEET24_SINGLETON: {
     "0xa4b1": "",

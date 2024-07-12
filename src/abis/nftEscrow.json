@@ -417,5 +417,12 @@
     "stateMutability": "view",
     "type": "function"
   },
+  {
+    "inputs": [],
+    "name": "yeethBalance",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
   { "stateMutability": "payable", "type": "receive" }
 ]
