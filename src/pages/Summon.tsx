@@ -94,7 +94,7 @@ const Summon = () => {
           form={APP_FORM.SUMMON_MEME}
           customFields={AppFieldLookup}
           targetNetwork={chainId}
-          submitButtonText="Summon NFT Escrow (do not use yet)"
+          submitButtonText="Summon NFT Escrow"
           lifeCycleFns={{
             onPollSuccess: (result) => {
               console.log("poll success", result);

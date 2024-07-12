@@ -97,7 +97,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
   },
   SUMMON_MEME: {
     id: "SUMMON_MEME",
-    title: "NFT Escrow Summoner (In DEV. Dont use yet)",
+    title: "NFT Escrow Summoner",
     description:
       "Give your raid a name, description, and initial bid price. You can also add an image and a longer introduction.",
     submitButtonText: "Summon MEME",

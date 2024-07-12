@@ -9,21 +9,19 @@ import {
   ValidNetwork,
 } from "@daohaus/keychain-utils";
 
-export const MEME_YEETER_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.5";
-export const NFT_ESCROW_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.5" // "NFTEscrowShamanSummoner.5";
+export const MEME_YEETER_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.6";
+export const NFT_ESCROW_SUMMONER_REFERRER = "DHYeet24ShamanSummoner.6"; // "NFTEscrowShamanSummoner.5";
 export const NFT_ESCROW_NAME = "YeetNftEscrowShamanModule";
 
-export const YEET24_REFERRER = "DHYeet24ShamanSummoner.5";
+export const YEET24_REFERRER = "DHYeet24ShamanSummoner.6";
 export const YEET24_NAME = "Yeet24ShamanModule";
-
-
 
 export const CURATOR_CONTRACTS: KeychainList = {
   YEET24_SUMMONER: {
     "0xa4b1": "",
   },
   YEETNFTESCROW_SUMMONER: {
-    "0xa4b1": "0x41af243572381b327e1cb7b0b76fc1ebbbb8be0c", // "0x3f5e1541cf9e7ef748cf86763a96b2f4c3a7bb4b", 
+    "0xa4b1": "0x24c2ca1152abe7f34b4ecd82a3d1d18876533620", //
   },
   YEETER_SINGLETON: {
     "0xa4b1": "",
@@ -32,7 +30,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
     "0xa4b1": "0xD55Ce418a17418FE36254AD71C25f87aA97AFC85",
   },
   YEETNFTESCROW_SINGLETON: {
-    "0xa4b1": "0xf84a8afa1ba33bab1ac8e82035e11bf3971888ab",
+    "0xa4b1": "0xEc0D1f8bAeD05ED6516fE0f9304566115f2DbbdE",
   },
   YEET24_SINGLETON: {
     "0xa4b1": "",
@@ -53,7 +51,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
     // "0x1": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2",
     // "0x5": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2",
     // "0xa": "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc",
-    "0xa4b1": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2" // "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc", // module factory 0x00000000000DC7F163742Eb4aBEf650037b1f588
+    "0xa4b1": "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2", // "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc", // module factory 0x00000000000DC7F163742Eb4aBEf650037b1f588
   },
   GNOSIS_SAFE_MASTER_COPY: {
     // "0x1": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552",
@@ -172,4 +170,3 @@ export const DEFAULT_NFTESCROW_YEETER_VALUES = {
   nftAddress: "0x9f4d7aac478bda478ff17c4344934e0f87cde9ec",
   nftTokenId: "1",
 };
-
