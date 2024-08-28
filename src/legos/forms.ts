@@ -192,6 +192,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
         expectType: "url",
         info: "icon, gif, pfp or avatar.",
       },
+      APP_FIELD.FEE_CHECKBOX_FIELD,
       APP_FIELD.SALT_NONCE_FIELD,
       APP_FIELD.DAO_ADDRESS_FIELD,
       APP_FIELD.SHAMAN_ADDRESS_FIELD,

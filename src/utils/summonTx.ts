@@ -265,6 +265,9 @@ const assembleShamanParams = ({
   const startDate = formValues["startDate"] as string;
   const endDate = formValues["endDate"] as string;
   const minSalePrice = formValues["minSalePrice"] as string;
+  const feeCheckbox = formValues["feeCheckbox"] as boolean;
+
+  console.log("feeCheckbox", feeCheckbox);
 
   console.log(
     "??????????",
@@ -318,8 +321,8 @@ const assembleShamanParams = ({
       price,
       DEFAULT_YEETER_VALUES.multiplier,
       minSalePrice, // goal?
-      DEFAULT_YEETER_VALUES.feeRecipients,
-      DEFAULT_YEETER_VALUES.feeAmounts,
+      feeCheckbox ? [] : DEFAULT_YEETER_VALUES.feeRecipients,
+      feeCheckbox ? [] : DEFAULT_YEETER_VALUES.feeAmounts,
     ]
   );
 

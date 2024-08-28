@@ -34,4 +34,9 @@ export const APP_FIELD: Record<string, CustomFieldLego> = {
     id: 'tags',
     type: 'multiSelect',
   },
+  FEE_CHECKBOX_FIELD: {
+    id: "feeCheckbox",
+    type: "feeCheckbox",
+    // label: "Disclaimer",
+  },
 };

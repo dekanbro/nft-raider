@@ -13,6 +13,7 @@ import { YeetAmount } from "../components/customFields/YeetAmount";
 import { YeetReturn } from "../components/customFields/YeetReturn";
 import { YeetHelper } from "../components/customFields/YeetHelper";
 import { ImagePreview } from "../components/customFields/ImagePreview";
+import { FeeCheckbox } from "../components/customFields/FeeCheckbox";
 
 export const AppFieldLookup = {
   ...MolochFields,
@@ -28,7 +29,8 @@ export const AppFieldLookup = {
   yeetAmount: YeetAmount,
   yeetReturn: YeetReturn,
   yeetHelper: YeetHelper,
-  imagePreview: ImagePreview
+  imagePreview: ImagePreview,
+  feeCheckbox: FeeCheckbox
 };
 
 export type CustomFieldLego = FieldLegoBase<typeof AppFieldLookup>;
