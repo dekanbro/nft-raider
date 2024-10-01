@@ -74,7 +74,7 @@ export const YeeterActions = ({
             daoId={daoId}
           />)}
         {/* only after presale if successfull and not executed */}
-        {yeeter.reachedGoal && canExecute && (<ExecuteEscrowButton
+        {yeeter.reachedGoal && (<ExecuteEscrowButton
           daoChain={daoChain}
           yeeterId={yeeterId}
           daoId={daoId}

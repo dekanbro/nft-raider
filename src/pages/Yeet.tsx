@@ -31,6 +31,11 @@ export function Yeet() {
   const { daoChain, daoId } = useCurrentDao();
   const { shamanAddress } = useCurrentYeeter();
 
+  console.log("Yeet.tsx");
+  console.log("daoChain", daoChain);
+  console.log("daoId", daoId);
+  console.log("shamanAddress", shamanAddress);
+
   return (
     <WideColumnLayout>
       {shamanAddress && daoId && daoChain && (

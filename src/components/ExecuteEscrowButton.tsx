@@ -84,7 +84,7 @@ const ExecuteEscrowButton = ({
                         daoId={daoId}
                         yeeterId={yeeterId}
                     >
-                        {canExecute ? (<FormBuilder
+                        {true ? (<FormBuilder
                             form={APP_FORM.EXECUTE_ESCROW_FORM}
                             customFields={AppFieldLookup}
                             targetNetwork={daoChain}

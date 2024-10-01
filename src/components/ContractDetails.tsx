@@ -62,12 +62,14 @@ export const ContractDetails = ({
     shamanAddress: yeeterId,
     chainId: daoChain,
   });
-  const { nftEscrowShaman } = useEscrow({
+  const { nftEscrowShaman, nftAddress, tokenId } = useEscrow({
     daoId,
     yeeterShamanAddress: yeeterId,
     chainId: daoChain,
     daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
   });
+
+  console.log("DETAILS yeeter >>>>>>>>>>>>>>>>>>>.", nftEscrowShaman, nftAddress, tokenId );
 
   const summoner = CURATOR_CONTRACTS.YEET24_SUMMONER[daoChain as ValidNetwork];
   const safeFactory =
@@ -108,6 +110,7 @@ export const ContractDetails = ({
           </ContractItem>
         )}
         {nftEscrowShaman && (
+          <>
           <ContractItem>
             <ParLg>NFT Escrow </ParLg>
             <ParSm>Executes the escrow.</ParSm>
@@ -123,6 +126,23 @@ export const ContractDetails = ({
               <ParSm>View on Etherscan</ParSm>
             </Link>
           </ContractItem>
+          <ContractItem>
+          <ParLg>NFT Address </ParLg>
+          <ParSm>NFT contract address.</ParSm>
+          {nftAddress && (<ParSm>{truncateAddress(nftAddress)}</ParSm>)}
+          <ParSm>Token Id: {tokenId?.toString()}</ParSm>
+
+          <Link
+            href={generateExplorerLink({
+              chainId: daoChain as ValidNetwork,
+              address: nftAddress,
+            })}
+            target="_blank"
+          >
+            <ParSm>View on Etherscan</ParSm>
+          </Link>
+        </ContractItem>
+        </>
         )}
         {yeeterId && (
           <ContractItem>

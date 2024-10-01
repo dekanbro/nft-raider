@@ -80,11 +80,11 @@ export const useEscrow = ({
             functionName: "yeethBalance",
           })) as string;
 
-          canExecute = (await publicClient.readContract({
-            address: shamanAddresses[i] as `0x${string}`,
-            abi: nftEscrowShamanAbi,
-            functionName: "canExecute",
-          })) as boolean;
+          // canExecute = (await publicClient.readContract({
+          //   address: shamanAddresses[i] as `0x${string}`,
+          //   abi: nftEscrowShamanAbi,
+          //   functionName: "canExecute",
+          // })) as boolean;
 
 
           break;

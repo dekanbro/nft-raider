@@ -167,7 +167,8 @@ export const getCampaignStatus = (
   if (yeeter.isEnded) {
     if (executed && goalAchieved) {
       return statusEnum.SUCCESS;
-    } else if (goalAchieved && canExecute) {
+    // } else if (goalAchieved && canExecute) {
+    } else if (goalAchieved) {
       return statusEnum.CAN_EXECUTE;
     } else {
       return statusEnum.FAIL;

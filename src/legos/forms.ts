@@ -34,7 +34,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
   EXIT_PRESALE_FORM: {
     id: "EXIT_PRESALE",
     title: "Exit Raid",
-    description: "Exit Raid and lose your deposit",
+    description: "Exit Raid to get your YEET back.",
     submitButtonText: "JEET",
     requiredFields: {
       amount: true,

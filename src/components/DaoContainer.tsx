@@ -70,7 +70,7 @@ const Dao = ({
       pathname={location.pathname}
       navLinks={[
         { label: "EXPLORE", href: `/` },
-        { label: "PROJECT", href: `/${routePath}` },
+        // { label: "PROJECT", href: `/${routePath}` },
       ]}
       leftNav={dao?.name && dao?.id && <p>{dao.name}</p>}
     >
