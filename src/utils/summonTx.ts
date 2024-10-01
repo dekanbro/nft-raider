@@ -12,14 +12,11 @@ import {
   isString,
 } from "@daohaus/utils";
 import {
-  CONTRACT_KEYCHAINS,
   HAUS_RPC,
-  Keychain,
   ValidNetwork,
 } from "@daohaus/keychain-utils";
 import { LOCAL_ABI } from "@daohaus/abis";
 import safeAbi from "../abis/safe.json";
-import safeL2Abi from "../abis/safeL2.json";
 import basicHOSSummoner from "../abis/basicHOSSummoner.json";
 import yeet24HosSummoner from "../abis/yeet24Summoner.json";
 
@@ -143,7 +140,7 @@ const assembleLootTokenParams = ({
   chainId: ValidNetwork;
   formValues: Record<string, unknown>;
 }) => {
-  const lootSingleton = CURATOR_CONTRACTS["GOV_LOOT_SINGLETON"][chainId];
+  const lootSingleton = CURATOR_CONTRACTS["LOOT_SINGLETON_2"][chainId];
   const daoName = formValues["daoName"] as string;
   const tokenSymbol = formValues["tokenSymbol"] as string;
 
@@ -171,7 +168,7 @@ const assembleShareTokenParams = ({
   formValues: Record<string, unknown>;
   memberAddress: EthAddress;
 }) => {
-  const shareSingleton = CONTRACT_KEYCHAINS["SHARES_SINGLETON"][chainId];
+  const shareSingleton = CURATOR_CONTRACTS["SHARES_SINGLETON_2"][chainId];
   const daoName = formValues["daoName"] as string;
   const tokenSymbol = formValues["tokenSymbol"] as string;
 

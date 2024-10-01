@@ -17,6 +17,12 @@ export const YEET24_REFERRER = "DHYeet24ShamanSummoner.6";
 export const YEET24_NAME = "Yeet24ShamanModule";
 
 export const CURATOR_CONTRACTS: KeychainList = {
+  SHARES_SINGLETON_2: {
+    "0xa4b1": "0xad9ae3ca04d670d6103516b2bf1f637ff1af240d",
+  },
+  LOOT_SINGLETON_2: {
+    "0xa4b1": "0xad9ae3ca04d670d6103516b2bf1f637ff1af240d",
+  },
   YEET24_SUMMONER: {
     "0xa4b1": "",
   },
