@@ -85,7 +85,7 @@ if (!tokenBalance) {
               value: fromWei(yeeter.goal),
               decimals: 3,
               format: "numberShort",
-            })} ${HAUS_NETWORK_DATA[chainId as ValidNetwork]?.symbol}`}
+            })} ${HAUS_NETWORK_DATA[chainId as ValidNetwork]?.symbol} (minimum threshold)`}
           />
           <div className="bar">
             <ProgressBar
