@@ -159,7 +159,7 @@ export const getCampaignStatus = (
   const statusEnum = {
     SUCCESS: "SUCCESS",
     CAN_EXECUTE: "CAN EXECUTE",
-    FAIL: "FAIL",
+    FAIL: "OVER",
     ACTIVE: "ACTIVE",
     COMING_SOON: "COMING SOON",
   };
