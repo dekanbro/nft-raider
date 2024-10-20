@@ -193,13 +193,13 @@ export const PresalePhase = ({
       )}
       {campaignStatus === "FAIL" && (
         <>
-          <BigH3>TO NOWHERE</BigH3>
+          <BigH3>IS OVER</BigH3>
           <ParLg>
             {`${formatValueTo({
               value: fromWei(yeeter.safeBalance.toString()),
               decimals: 5,
               format: "number",
-            })} ETH Raised, but it wasn't enough`}
+            })} ETH Raised`}
           </ParLg>
           {Number(member?.shares) > 0 && (
             <ExitButton daoChain={daoChain} yeeterId={yeeterId} daoId={daoId} />
